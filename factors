@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+
+import sys
+import time
+def factorize(n):        
+        """the input is a number
+    Args:
+            num: parameter
+            Return: depending to the case a factor or None
+        """
+        for i in range(2, int(n**0.5)+1):
+                if n % i == 0:
+                        return (i,n/i)
+        return None
+
+if __name__ == "__main__":
+        """get to the input file
+        """
+        if len(sys.argv) != 2:
+           print("Usage: factors <file>")
+           exit()
+        input_file = sys.argv[1]
+
+        try:
+           with open(input_file, 'r') as f:
+                lns = f.readlines()
+        except FileNotFoundError:
+           print("File not found")
+           exit()
+        start_time = time.time()
+        """Prints the factorization and returns a tuple of factors """
+        for ln in lns:
+            n = int(ln.strip())
+            factors = factorize(n)
+            if factors:
+                print(f"{num}={factors[0]}*{factors[1]}")
+
+                """The exit with an Error message when out of time"""
+            if time.time() - start_time > 5:
+                print("time limit exceeded")
+                exit()
+
