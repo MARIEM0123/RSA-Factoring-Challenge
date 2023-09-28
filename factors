@@ -33,7 +33,7 @@ if __name__ == "__main__":
             n = int(ln.strip())
             factors = factorize(n)
             if factors:
-                print(f"{num}={factors[0]}*{factors[1]}")
+                print(f"{n}={factors[0]}*{factors[1]}")
 
                 """The exit with an Error message when out of time"""
             if time.time() - start_time > 5:
